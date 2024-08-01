@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clean-reports": "rimraf cypress/reports",
+    "merge-reports": "mochawesome-merge cypress/reports/mochawesome_*.json > cypress/reports/merged-report.json",
+    "generate-report": "marge cypress/reports/merged-report.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
