@@ -1,55 +1,55 @@
-# name: Cypress Tests
+name: Cypress Tests
 
-# on: push
-
-# jobs:
-#   test:
-#     runs-on: ubuntu-latest
-
-#     steps:
-#       - name: Get code
-#         uses: actions/checkout@v3
-
-#       - name: Install NodeJS
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: 18
-
-#       - name: Install dependencies
-#         run: npm install
-
-#       - name: Clean up old reports
-#         run: rm -rf cypress/reports || true
-
-#       - name: Run Cypress tests
-#         run: npx cypress run --browser chrome
-
-#       - name: Merge Mochawesome reports
-#         run: npm run merge-reports
-
-#       - name: Generate HTML report
-#         run: npx marge cypress/reports/merged-report.json -o cypress/reports/report.html
-
-#       - name: Upload report as artifact
-#         uses: actions/upload-artifact@v3
-#         with:
-#           name: cypress-report
-#           path: cypress/reports/report.html
-#       - name: Cypress tests
-#         uses: cypress-io/github-action@v6
-name: Automation-exercise
 on: push
-jobs:
-  cypress-run:
-    runs-on: ubuntu-22.04
-    name: 1.1.0
-    steps:
-      - uses: actions/checkout@v4
 
-      - name: Set up Node.js 20
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+
+      - name: Install NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: "20"
+          node-version: 18
 
+      - name: Install dependencies
+        run: npm install
+
+      - name: Clean up old reports
+        run: rm -rf cypress/reports || true
+
+      - name: Run Cypress tests
+        run: npx cypress run --browser chrome
+
+      - name: Merge Mochawesome reports
+        run: npm run merge-reports
+
+      - name: Generate HTML report
+        run: npx marge cypress/reports/merged-report.json -o cypress/reports/report.html
+
+      - name: Upload report as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-report
+          path: cypress/reports/report.html
       - name: Cypress tests
         uses: cypress-io/github-action@v6
+# name: Automation-exercise
+# on: push
+# jobs:
+#   cypress-run:
+#     runs-on: ubuntu-22.04
+#     name: 1.1.0
+#     steps:
+#       - uses: actions/checkout@v4
+
+#       - name: Set up Node.js 20
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: "20"
+
+#       - name: Cypress tests
+#         uses: cypress-io/github-action@v6
