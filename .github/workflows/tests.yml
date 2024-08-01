@@ -14,6 +14,12 @@ jobs:
         run: npm install
       - name: run tests
         run: npx cypress run --browser chrome
+      - name: List report files
+        run: ls -la cypress/reports
+
+      - name: View JSON files
+        run: cat cypress/reports/*.json || true
+
       - name: Merge Mochawesome reports
         run: npx mochawesome-merge cypress/reports/*.json > cypress/reports/report.json
 
