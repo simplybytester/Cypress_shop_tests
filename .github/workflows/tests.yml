@@ -35,3 +35,5 @@ jobs:
         with:
           name: cypress-report
           path: cypress/reports/report.html
+      - name: Cypress tests
+        uses: cypress-io/github-action@v6
