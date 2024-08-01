@@ -14,3 +14,14 @@ jobs:
         run: npm install
       - name: run tests
         run: npx cypress run --browser chrome
+      - name: Merge Mochawesome reports
+        run: npx mochawesome-merge cypress/reports/*.json > cypress/reports/report.json
+
+      - name: Generate HTML report
+        run: npx mochawesome-report-generator cypress/reports/report.json -o cypress/reports
+
+      - name: Upload report as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-report
+          path: cypress/reports/report.html
